@@ -1,0 +1,96 @@
+{% extends "SoftlogoPortfolioBundle:Portfolio:index.html.twig" %}
+
+{% block title %}
+<title>{{entity.name}}</title>
+{% endblock %}
+
+{% block style %}
+{{parent()}}
+<style type="text/css">
+	.body-wrapper p {
+		font-size: 14px;
+		margin: 0px 20px 20px;
+	}
+	.h3-sidebar-title {
+		color: #4B4B4B;
+		font-size: 15px;
+		font-weight: 600;
+	}
+</style>
+{% endblock %}
+{% block breadcrumb %}	
+<li>
+<a href="/">Home</a>
+</li>
+<li><a href="/pl/portfolio">Realizacje</a></li>
+<li class="active">{{entity.name}}</li>
+{% endblock breadcrumb %}	
+
+{% block content -%}
+<div class="body-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+
+				<h1>{{entity.name}}</h1>
+				<h3 class="h3-sidebar-title sidebar-title">{{entity.shortDescription}}</h3>
+			</div>
+
+			<div class="col-md-5 col-sm-6 col-md-offset-1">
+
+				<div class="sidebar">
+					<br />
+					<br />
+
+
+					<h3 class="h3-sidebar-title sidebar-title">Data:</h3>
+					<p>{{entity.date|date("Y-m-d")}}</p>
+
+					<br />
+					<h3 class="h3-sidebar-title sidebar-title">Zakres usług:</h3>
+					<p>{{entity.description}}</p>
+					<br />
+
+				</div>
+
+
+			</div>
+			<div class="col-md-5 col-sm-6">
+
+
+				<!-- Blog Post -->
+
+
+				<div class="portfolio-single-image cycle-slideshow"
+					data-cycle-slides="> .slider-img"
+					data-cycle-swipe="true"
+					data-cycle-prev=".cycle-prev"
+					data-cycle-next=".cycle-next"
+					data-cycle-timeout=0>
+					<div class="fa fa-chevron-right cycle-next"></div>
+					<div class="fa fa-chevron-left cycle-prev"></div>
+					<div class="cycle-pager"></div>
+					{% for pm in entity.portfolioMedias %}
+					<div class="slider-img">
+						<img src="{% path pm.media, 'large' %}" alt="" class="img-responsive"/>
+					</div>
+					{% endfor %}
+
+				</div>
+
+				<br />
+				<br />
+
+
+
+				<a href="{{ path('portfolio') }}">Powrót do listy realizacji</a>
+			</div>
+
+
+		</div>
+	</div>
+
+
+
+
+	{% endblock %}

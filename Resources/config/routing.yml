@@ -1,0 +1,6 @@
+softlogo_portfolio_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SoftlogoPortfolioBundle:Default:index }
+SoftlogoPortfolioBundle_portfolio:
+    resource: "@SoftlogoPortfolioBundle/Resources/config/routing/portfolio.yml"
+    prefix:   /

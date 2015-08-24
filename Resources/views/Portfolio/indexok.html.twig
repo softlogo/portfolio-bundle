@@ -1,0 +1,68 @@
+{% extends "SoftlogoCMSBundle:Page:page.html.twig" %}
+
+{% block title %}
+<title>Realizacje</title>
+{% endblock %}
+{% block breadcrumb %}	
+<li>
+<a href="/">Home</a>
+</li>
+<li class="active">Sklep</li>
+{% endblock breadcrumb %}	
+{% block content -%}
+<div class="body-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<div class="portfolio-filter-container">
+					<ul class="portfolio-filter">
+						<li>
+						<a href="#" class="portfolio-selected" data-filter="*">Wszystko</a>
+						</li>
+					{% for cat in categories %}
+						<li>
+						<a href="#" data-filter=".cat{{cat.id}}">{{cat.name}}</a>
+						</li>
+					{% endfor %}
+					</ul>
+				</div>
+				<div class="portfolio-items">
+					{% for item in entities %}
+					<div class="thumb-label-item cat{{item.category.id}}">
+						<div class="img-overlay thumb-label-item-img">
+							<img
+							src="{% path item.getFirstPortfolioMedia().media, 'medium'%}"
+							alt=""/>
+
+							<div class="item-img-overlay">
+								<a class="portfolio-zoom fa fa-plus" href="{% path item.getFirstPortfolioMedia().media, 'large'%}"
+									data-rel="prettyPhoto[portfolio]" title="{{item.name}}"></a>
+								<div class="item_img_overlay_content">
+									<h3 class="thumb-label-item-title">
+										<a href="{{ path('portfolio_show', { 'id': item.id }) }}">{{item.name}}</a>
+									</h3>
+								</div>
+
+							</div>
+						</div>
+
+
+					</div>
+					<!-- Portfolio Item -->
+
+					{% endfor %}
+
+
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+{% endblock %}

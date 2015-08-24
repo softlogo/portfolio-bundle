@@ -1,0 +1,34 @@
+portfolio:
+    path:     /
+    defaults: { _controller: "SoftlogoPortfolioBundle:Portfolio:index" }
+
+portfolio_cat:
+    pattern:  /category/{id}
+    defaults: { _controller: SoftlogoPortfolioBundle:Portfolio:findByCategory }
+
+portfolio_show:
+    path:     /{id}/show
+    defaults: { _controller: "SoftlogoPortfolioBundle:Portfolio:show" }
+
+portfolio_new:
+    path:     /new
+    defaults: { _controller: "SoftlogoPortfolioBundle:Portfolio:new" }
+
+portfolio_create:
+    path:     /create
+    defaults: { _controller: "SoftlogoPortfolioBundle:Portfolio:create" }
+    requirements: { _method: post }
+
+portfolio_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SoftlogoPortfolioBundle:Portfolio:edit" }
+
+portfolio_update:
+    path:     /{id}/update
+    defaults: { _controller: "SoftlogoPortfolioBundle:Portfolio:update" }
+    requirements: { _method: post|put }
+
+portfolio_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SoftlogoPortfolioBundle:Portfolio:delete" }
+    requirements: { _method: post|delete }
